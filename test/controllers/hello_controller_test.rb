@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class HelloControllerTest < ActionDispatch::IntegrationTest
+
   test "it return birthday message" do
     get '/hello/john'
 
