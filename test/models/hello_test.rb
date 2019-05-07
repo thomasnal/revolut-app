@@ -17,7 +17,7 @@ class HelloTest < ActiveSupport::TestCase
     Timecop.travel Date.today.beginning_of_year
 
     assert_equal "Hello, James! Happy birthday!",
-      james.birthday_message(0)
+      james.birthday_message
   end
 
 
@@ -27,7 +27,7 @@ class HelloTest < ActiveSupport::TestCase
     Timecop.travel Date.today.beginning_of_year
 
     assert_equal "Hello, John! Your birthday is in 1 day(s)",
-      john.birthday_message(1)
+      john.birthday_message
   end
 
 end

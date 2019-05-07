@@ -1,6 +1,6 @@
 class Hello < ApplicationRecord
 
-  def birthday_message days_left
+  def birthday_message
     days_left = days_to_birthday
 
     if days_left == 0
