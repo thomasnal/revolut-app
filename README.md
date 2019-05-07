@@ -1,24 +1,13 @@
-# README
+# Hello birthday app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web application that saves username and birthdate, and returns hello birthday message 
 
-Things you may want to cover:
 
-* Ruby version
+# Testing
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+On a local machine,
+```
+docker-compose up -d
+curl -X PUT http://localhost:8080/hello/jane -H "Content-Type: application/json" -d '{"dateOfBirth":"2016-01-01"}'
+curl -X GET http://localhost:8080/hello/jane
+```
