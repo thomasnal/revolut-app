@@ -8,7 +8,7 @@ class HelloController < ApplicationController
 
 
   def update
-    hello = Hello.find_or_initialize_by username: params[:username]
+    hello = Hello.find_or_initialize_by username: params[:username].to_s.downcase
 
     hello.dateOfBirth = params[:dateOfBirth]
     hello.save!

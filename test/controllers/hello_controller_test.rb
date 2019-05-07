@@ -16,7 +16,7 @@ class HelloControllerTest < ActionDispatch::IntegrationTest
     refute Hello.find_by_username 'doe'
 
     assert_difference ->{ Hello.count } => 1 do
-      put '/hello/doe', params: { dateOfBirth: '2019-01-01' }
+      put '/hello/doe', params: { dateOfBirth: '2019-01-01' }, as: :json
     end
 
     doe = Hello.find_by_username 'doe'
@@ -31,7 +31,7 @@ class HelloControllerTest < ActionDispatch::IntegrationTest
     assert Hello.find_by_username 'john'
 
     assert_no_difference ->{ Hello.count } do
-      put '/hello/john', params: { dateOfBirth: '2018-01-01' }
+      put '/hello/john', params: { dateOfBirth: '2018-01-01' }, as: :json
     end
 
     john = Hello.find_by_username 'john'
