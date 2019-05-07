@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  app:
+    tty: true
+    build: 
+      context: .
+      dockerfile: Dockerfile.devel
+    environment:
+      APP_HOME: /var/www/html
+      BUNDLE_PATH: /bundle
+      PASSENGER_APP_ENV: development
+      POSTGRESQL_DATABASE: revolut_development
+      POSTGRESQL_ADDRESS: db
+      POSTGRESQL_USERNAME: postgres
+      POSTGRESQL_PASSWORD: ''
+      TERM: xterm-256color
+    hostname: app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html:cached
+      - app_home_folder:/home/app
+      - bundle:/bundle
+
+  db:
+    image: postgres:9.6.9
+    hostname: db
+    # ports:
+    #   - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ''
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  app_home_folder:
+    external: false
+
+  bundle:
+    external: false
+
+  db_data:
+    external: false
